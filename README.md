@@ -12,8 +12,8 @@ Either `schema_registry config` or `schema_file` or `schema_json` is required.
 | ---- | ----------- |
 | `schema_file` | filename of Avro schema |
 | `schema_json` | JSON representation of Avro schema |
-| `schema_uri` | Schema Registry URI |
-| `schema_port` | Schema Registry Port |
+| `schema_registry_uri` | Schema Registry URI |
+| `schema_registry_port` | Schema Registry Port |
 | `schema_id` | Id of the Schema |
 | `use_ssl` | To use or not to use SSL |
 

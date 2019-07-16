@@ -10,7 +10,8 @@ module Fluent
 
       config_param :schema_file, :string, :default => nil
       config_param :schema_json, :string, :default => nil
-      config_param :schema_uri, :string, :default => nil
+      config_param :schema_registry_uri, :string, :default => nil
+      config_param :schema_registry_port, :string, :default => nil
       config_param :schema_id, :string, :default => nil
       config_param :use_ssl, :bool, :default => false
 
@@ -25,9 +26,9 @@ module Fluent
             raise Fluent::ConfigError, 'schema_id is required while using schema_uri'
           end
             
-          net = Net::HTTP(@schema_uri)
+          net = Net::HTTP.new(@schema_registry_uri, @schema_registry_port)
           if @use_ssl then
-            net.use_ssl = true
+            net.verify_mode = OpenSSL::SSL::VERIFY_NONE
           end
             
           request = Net::HTTP::Get.new("/schemas/ids/" + @schema_id)
